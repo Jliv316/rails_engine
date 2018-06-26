@@ -18,6 +18,8 @@ gem 'factory_bot_rails'
 # gem 'rack-cors'
 
 group :development, :test do
+  gem 'nyan-cat-formatter'
+  gem 'pry'
   gem 'rspec-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
