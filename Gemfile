@@ -21,9 +21,10 @@ gem 'active_model_serializers'
 # gem 'rack-cors'
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'nyan-cat-formatter'
-  gem 'pry'
   gem 'rspec-rails'
+  gem 'pry'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
