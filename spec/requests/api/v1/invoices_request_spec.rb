@@ -6,6 +6,7 @@ describe 'Invoices API' do
     merchant = create(:merchant)
 
     invoices = create_list(:invoice, 3)
+    transactions = create_list(:transaction, 3)
   end
 
   context 'get request to /api/v1/invoices' do
@@ -43,6 +44,19 @@ describe 'Invoices API' do
 
       expect(response).to be_successful
       expect(invoice["id"]).to eq(id)
+    end
+  end
+
+  context 'get request to /api/v1/invoices/id' do
+    it 'can get one invoice by id' do
+      id = create(:invoice).id
+      
+      get "/api/v1/invoices/#{id}/transactions"
+      binding.pry
+      transactions = JSON.parse(response.body)
+
+      expect(response).to be_successful
+      expect(transactions.count).to eq(3)
     end
   end
 end
