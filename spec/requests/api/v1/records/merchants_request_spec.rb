@@ -8,7 +8,6 @@ describe 'Merchants API' do
 
     expect(response).to be_successful
 
-
     merchants = JSON.parse(response.body)
 
     expect(merchants.count).to eq(3)
@@ -25,7 +24,7 @@ describe 'Merchants API' do
     expect(merchant["id"]).to eq(id)
   end
 
-  describe 'merchant search' do
+  describe 'merchant finders' do
     it 'finds one merchant by id' do
       merchants = create_list(:merchant, 5)
 
@@ -47,7 +46,19 @@ describe 'Merchants API' do
 
       merchants_json = JSON.parse(response.body)
 
-      expect(merchants_json["id"]).to eq(merchants[0].id)
+      expect(merchants_json["name"]).to eq(merchants[0].name)
+    end
+
+    it 'finds one merchant by name case insenstive' do
+      merchants = create_list(:merchant, 5)
+
+      get "/api/v1/merchants/find?name=#{merchants[0].name.upcase}"
+
+      expect(response).to be_successful
+
+      merchants_json = JSON.parse(response.body)
+
+      expect(merchants_json["name"]).to eq(merchants[0].name)
     end
 
     it 'finds all merchants by id' do
@@ -68,7 +79,7 @@ describe 'Merchants API' do
 
       expect(response).to be_successful
       merchants_json = JSON.parse(response.body)
-      expect(merchants_json.count).to eq(5)
+      expect(merchants_json.count).to eq(1)
     end
   end
 
