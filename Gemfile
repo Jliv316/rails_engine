@@ -18,6 +18,7 @@ gem 'factory_bot_rails'
 # gem 'rack-cors'
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'pry'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
