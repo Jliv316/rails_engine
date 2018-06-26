@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_26_005630) do
+ActiveRecord::Schema.define(version: 2018_06_26_190226) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "citext"
   enable_extension "plpgsql"
 
   create_table "customers", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
+    t.citext "first_name"
+    t.citext "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,7 +35,7 @@ ActiveRecord::Schema.define(version: 2018_06_26_005630) do
   end
 
   create_table "invoices", force: :cascade do |t|
-    t.string "status"
+    t.citext "status"
     t.bigint "customer_id"
     t.bigint "merchant_id"
     t.datetime "created_at", null: false
@@ -44,8 +45,8 @@ ActiveRecord::Schema.define(version: 2018_06_26_005630) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
+    t.citext "name"
+    t.citext "description"
     t.decimal "unit_price", precision: 10, scale: 2
     t.bigint "merchant_id"
     t.datetime "created_at", null: false
@@ -54,7 +55,7 @@ ActiveRecord::Schema.define(version: 2018_06_26_005630) do
   end
 
   create_table "merchants", force: :cascade do |t|
-    t.string "name"
+    t.citext "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,7 +63,7 @@ ActiveRecord::Schema.define(version: 2018_06_26_005630) do
   create_table "transactions", force: :cascade do |t|
     t.bigint "credit_card_number"
     t.string "credit_card_expiration_date"
-    t.string "result"
+    t.citext "result"
     t.bigint "invoice_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
