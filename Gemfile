@@ -19,6 +19,7 @@ gem 'factory_bot_rails'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'pry'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
