@@ -5,19 +5,31 @@ describe 'Invoices API' do
     customer = create(:customer)
     merchant = create(:merchant)
 
-    invoice1 = Invoice.create(status: "shipped", customer_id: customer.id, merchant_id: merchant.id)
-    invoice2 = Invoice.create(status: "pending", customer_id: customer.id, merchant_id: merchant.id)
-    invoice3 = Invoice.create(status: "ordered", customer_id: customer.id, merchant_id: merchant.id)
+    invoices = create_list(:invoice, 3)
   end
+  
   context 'get request to /api/v1/invoices' do
     it 'responds with a list of all invoices' do
-      binding.pry
+
       get '/api/v1/invoices'
 
       invoices = JSON.parse(response.body)
 
       expect(response).to be_successful
       expect(invoices.count).to eq(3)
+    end
+  end
+
+  context 'get request to /api/v1/invoices/id' do
+    it 'can get one invoice by id' do
+      id = create(:invoice).id
+
+      get "/api/v1/invoices/#{id}"
+
+      invoice = JSON.parse(response.body)
+
+      expect(response).to be_successful
+      expect(invoice["id"]).to eq(id)
     end
   end
 end
