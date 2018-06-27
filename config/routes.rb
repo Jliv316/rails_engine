@@ -7,13 +7,13 @@ Rails.application.routes.draw do
         get '/random', to: "random#show"
       end
 
-      resources :merchants, only: [:index, :show]
-    end
-  end
+      resources :merchants, only: [:index, :show] do
+      end
 
-  namespace :api do
-    namespace :v1 do
-      resources :invoices, only: [:index, :show]
+      resources :invoices, only: [:index, :show] do
+        get '/transactions', to: 'invoices/transactions#index'
+        get '/invoice_items', to: 'invoices/invoice_items#index'
+      end
     end
   end
 end
