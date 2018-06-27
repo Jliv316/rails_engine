@@ -1,12 +1,10 @@
 require 'rails_helper'
 
 describe 'Invoices API' do
-  before(:all) do
-    customer = create(:customer)
-    merchant = create(:merchant)
-
-    @invoices = create_list(:invoice, 3)
-    transactions = create_list(:transaction, 3)
+  let(:customer){ create(:customer)}
+  let(:merchant){ create(:merchant)}
+  before(:each) do
+    @invoices = create_list(:invoice, 3, merchant: merchant, customer: customer)
   end
 
   context 'get request to /api/v1/invoices' do
