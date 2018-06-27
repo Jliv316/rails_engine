@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :item do
-    name "MyString"
-    description "MyString"
+    merchant
+    name Faker::StarWars.specie
+    description Faker::StarWars.wookiee_sentence
     unit_price "9.99"
-    merchant nil
   end
 end
