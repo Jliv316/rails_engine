@@ -2,20 +2,21 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :merchants do
-        get '/find', to: "search#show"
-        get '/find_all', to: "search#index"
-        get '/customers_with_pending_invoices', to:"invoice_analysis#index"
-        get '/random', to: "random#show"
-      end
-
-      namespace :invoices do
-        get '/find', to: "search#show"
-        get '/find_all', to: "search#index"
+        get '/find', to: 'search#show'
+        get '/find_all', to: 'search#index'
+        get '/customers_with_pending_invoices', to:'invoice_analysis#index'
+        get '/random', to: 'random#show'
       end
 
       resources :merchants, only: [:index, :show] do
+        get '/revenue', to: 'merchants/revenue#show'
         get '/items', to: 'merchants/items#index'
         get '/invoices', to: 'merchants/invoices#index'
+      end
+
+      namespace :invoices do
+        get '/find', to: 'search#show'
+        get '/find_all', to: 'search#index'
       end
 
       resources :invoices, only: [:index, :show] do
