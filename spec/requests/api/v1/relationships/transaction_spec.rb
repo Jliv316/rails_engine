@@ -11,6 +11,9 @@ describe 'relationships' do
 
     get "/api/v1/transactions/#{transaction.id}/invoice"
 
+    invoice = JSON.parse(response.body)
+
     expect(response).to be_successful
+    expect(invoice["id"]).to eq(transaction.invoice.id)
   end
 end
