@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'merchant buisness intelligence' do
+describe 'merchant revenue buisness intelligence' do
   it 'returns the total revenue for that merchant across successful transactions' do
     merchant = create(:merchant)
     invoices = create_list(:invoice, 3, merchant: merchant)
