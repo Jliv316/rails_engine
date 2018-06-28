@@ -22,6 +22,7 @@ gem 'active_model_serializers'
 # gem 'rack-cors'
 
 group :development, :test do
+  gem 'simplecov'
   gem 'database_cleaner'
   gem 'nyan-cat-formatter'
   gem 'rspec-rails'
