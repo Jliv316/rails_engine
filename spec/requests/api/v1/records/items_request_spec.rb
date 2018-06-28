@@ -63,14 +63,14 @@ describe 'Items API' do
       expect(item["name"]).to eq(@items[0].name)
     end
 
-    xit 'finds one item by unit_price' do
-      get "/api/v1/items/find?unit_price=#{@items[0].unit_price}"
+    it 'finds one item by unit_price' do
+      get "/api/v1/items/find?unit_price=#{@items[0].unit_price.to_i}"
 
       expect(response).to be_successful
 
       item = JSON.parse(response.body)
 
-      expect(item["unit_price"]).to eq(@items[0].unit_price)
+      expect(item["unit_price"]).to eq(Money.new(@items[0].unit_price, "USD").to_s)
     end
 
     it 'finds one item by merchant id' do
