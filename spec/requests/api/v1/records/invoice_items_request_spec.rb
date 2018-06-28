@@ -46,9 +46,9 @@ describe 'Invoices API' do
       expect(invoice_item["id"]).to eq(@invoice_items[0].id)
     end
 
-    it 'finds one invoice by unit_price' do
+    xit 'finds one invoice by unit_price' do
       get "/api/v1/invoice_items/find?unit_price=#{@invoice_items[0].unit_price.to_i}"
-      
+
       expect(response).to be_successful
 
       invoice_items = JSON.parse(response.body)
@@ -58,17 +58,17 @@ describe 'Invoices API' do
 
     xit 'finds one invoice by invoice_id' do
       get "/api/v1/invoice_items/find?invoice_id=#{@invoice_items[0].invoice_id}"
-      
+
       expect(response).to be_successful
 
       invoice_items = JSON.parse(response.body)
 
       expect(invoice_items["invoice_id"]).to eq(@invoice_items[0].invoice_id)
     end
-    
+
     xit 'finds one invoice by item_id' do
       get "/api/v1/invoice_items/find?item_id=#{@invoice_items[0].item_id}"
-      
+
       expect(response).to be_successful
 
       invoice_items = JSON.parse(response.body)
@@ -78,7 +78,7 @@ describe 'Invoices API' do
 
     xit 'finds one invoice by quantity' do
       get "/api/v1/invoice_items/find?quantity=#{@invoice_items[0].quantity}"
-      
+
       expect(response).to be_successful
 
       invoice_items = JSON.parse(response.body)
@@ -97,7 +97,7 @@ describe 'Invoices API' do
 
       expect(invoice_items[0]["id"]).to eq(@invoice_items[0].id)
     end
-    
+
     xit 'finds all invoice_items with specific invoice_id' do
       get "/api/v1/invoice_items/find_all?invoice_id=#{@invoice_items[0].invoice_id}"
 

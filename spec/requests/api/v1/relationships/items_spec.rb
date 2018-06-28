@@ -17,4 +17,15 @@ describe 'relationships' do
 
     expect(item1.invoice_items.count).to eq(invoice_items_json.count)
   end
+
+  it 'returns an associated merchant' do
+    merchant = create(:merchant)
+    item = create(:item, merchant: merchant)
+
+    get "/api/v1/items/#{item.id}/merchant"
+
+    expect(response).to be_successful
+    merchant_json = JSON.parse(response.body)
+    expect(item.merchant.id).to eq(merchant_json["id"])
+  end
 end
