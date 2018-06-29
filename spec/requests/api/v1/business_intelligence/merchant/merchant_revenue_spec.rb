@@ -56,6 +56,7 @@ describe 'merchant revenue buisness intelligence' do
     expect(response).to  be_successful
     merchants_json = JSON.parse(response.body)
     expect(merchants_json.first["id"]).to eq(merchant1.id)
+  end
 
   it 'returns the total revenue for all merchants across successful transactions by a specific date' do
     merchant = create(:merchant)
@@ -72,6 +73,5 @@ describe 'merchant revenue buisness intelligence' do
     expect(response).to be_successful
     revenue_json = JSON.parse(response.body)
     expect(revenue_json["total_revenue"]).to eq(Money.new(500, "USD").to_s)
-
   end
 end
