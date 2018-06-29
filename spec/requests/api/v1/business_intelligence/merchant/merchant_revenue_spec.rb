@@ -51,6 +51,6 @@ describe 'merchant revenue buisness intelligence' do
 
     expect(response).to be_successful
     revenue_json = JSON.parse(response.body)
-    expect(revenue_json["revenue"]).to eq(Money.new(500, "USD").to_s)
+    expect(revenue_json["total_revenue"]).to eq(Money.new(500, "USD").to_s)
   end
 end

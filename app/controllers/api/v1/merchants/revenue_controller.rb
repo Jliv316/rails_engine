@@ -8,6 +8,6 @@ class Api::V1::Merchants::RevenueController < ApplicationController
   end
 
   def index
-    render json: Merchant.merchants_revenue_by_date(params["date"].to_date), serializer: MerchantRevenueSerializer
+    render json: Merchant.merchants_revenue_by_date(params["date"].to_date), serializer: TotalRevenueSerializer
   end
 end
