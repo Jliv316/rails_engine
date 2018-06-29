@@ -1,5 +1,6 @@
 class Api::V1::Merchants::FavoriteCustomerController < ApplicationController
-  def show
-    render json: Merchant.find(params[:merchant_id]).invoices
+  def index
+    render json: Merchant.find(params[:merchant_id]).fav_customer
   end
+  
 end

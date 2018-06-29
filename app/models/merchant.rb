@@ -19,4 +19,12 @@ class Merchant < ApplicationRecord
     .where( transactions: {result: "success"})
     .limit(quantity)
   end
+
+  def fav_customer
+    customers.joins(:invoices, :transactions)
+    .order("transactions.count DESC")
+    .where(transactions: {result: "success"})
+    .group(:id)
+    .limit(1).first
+  end
 end
