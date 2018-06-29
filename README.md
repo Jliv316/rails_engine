@@ -11,7 +11,7 @@ If you would like to run this application on your local machine, follow these st
 bundle install
 bundle update
 ```
-4. Set up the the database and seed the sales data.
+4. Set up the the database and seed the sales data:
 ```ruby
 #create the database and table structure
 rake db:create
