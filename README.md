@@ -13,6 +13,7 @@ bundle update
 ```
 4. Set up the the database and seed the sales data.
 ```ruby
+#create the database and table structure
 rake db:create
 rake db:migrate
 
