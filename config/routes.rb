@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         get '/customers_with_pending_invoices', to:'invoice_analysis#index'
         get '/random', to: 'random#show'
         get '/most_items', to: 'most_items#index'
+        get '/revenue', to: 'revenue#index'
       end
 
 
