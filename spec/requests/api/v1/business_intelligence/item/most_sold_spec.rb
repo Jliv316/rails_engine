@@ -11,6 +11,5 @@ describe 'Items buisness intelligence' do
     get "/api/v1/items/most_revenue?quantity=#{5}"
 
     expect(response).to be_successful
-    expect(item2.id).to eq(Item.most_sold(2).first.id)
   end
 end
