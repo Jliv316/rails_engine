@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         get '/random', to: 'random#show'
         get '/most_items', to: 'most_items#index'
         get '/revenue', to: 'revenue#index'
+        get '/most_revenue', to: 'most_revenue#index'
       end
 
 
@@ -45,6 +46,7 @@ Rails.application.routes.draw do
         get '/items', to: 'merchants/items#index'
         get '/invoices', to: 'merchants/invoices#index'
         get '/favorite_customer', to: 'merchants/favorite_customer#index'
+        get '/most_revenue', to: 'merchants/revenue#index'
       end
 
 

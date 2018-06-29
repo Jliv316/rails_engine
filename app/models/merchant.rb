@@ -46,4 +46,12 @@ class Merchant < ApplicationRecord
     .limit(1)
     .first
   end
+
+  def self.top_merchant(quantity = 3)
+    joins(invoices: [:invoice_items, :transactions])
+        .group(:id)
+        .order("sum(invoice_items.quantity * invoice_items.unit_price) DESC")
+        .where(transactions: {result: "success"})
+        .limit(quantity)
+  end
 end
