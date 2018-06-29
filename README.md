@@ -25,7 +25,8 @@ rake import:all
 ```ruby
 rspec
 ```
-6.  We included the following gems in our project:
+
+We included the following gems in our project:
   - [Factory Bot](https://github.com/thoughtbot/factory_bot_rails)
   - [Faker](https://github.com/stympy/faker)
   - [Money](https://github.com/RubyMoney/money)
